@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:flutter/cupertino.dart';
 
@@ -7,7 +8,7 @@ ClipPath buildClipPath({double height = 100}) {
   return ClipPath(
     clipper: BGTopClipper(height: height / 2),
     child: Container(
-      color: const Color(0xFF1681FC),
+      color: Colors.black87,
       height: 60,
       width: Get.width,
     ),

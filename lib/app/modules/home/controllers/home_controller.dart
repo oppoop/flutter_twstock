@@ -4,10 +4,8 @@ import 'package:get/get.dart';
 class HomeController extends GetxController {
   //TODO: Implement HomeController
   final menuHeight = 0.0.obs;
-  final Positioned = 0.0.obs;
   double? startPositioned;
   final isOpen = Rx<bool>(false);
-  final ScrollController _scrollController = ScrollController();
 
   @override
   void onInit() {
@@ -21,7 +19,6 @@ class HomeController extends GetxController {
 
   @override
   void onClose() {
-    _scrollController.dispose();
   }
 
   void topMenuOpen(){
