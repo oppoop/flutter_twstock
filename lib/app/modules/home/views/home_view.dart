@@ -1,3 +1,6 @@
+import 'dart:core';
+
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_twstock/utils/half_circle.dart';
 import 'package:get/get.dart';
@@ -5,6 +8,8 @@ import 'package:get/get.dart';
 import '../controllers/home_controller.dart';
 
 class HomeView extends GetView<HomeController> {
+  final List<String> menuLeft = ['test1', 'test2', 'test3'];
+  final List<String> menuRight = ['test4', 'test5', 'test6'];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -40,6 +45,7 @@ class HomeView extends GetView<HomeController> {
             width: Get.width,
             height: this.controller.menuHeight.value,
             color: Colors.black87,
+            child: menuList(),
           ),
         ),
         GestureDetector(
@@ -77,6 +83,57 @@ class HomeView extends GetView<HomeController> {
   }
 
   ///加權指數區塊
+  Widget menuList() {
+    return Center(
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Container(
+            width: 50,
+            height: 200,
+            color: Colors.blue,
+            child: ListView.builder(
+                shrinkWrap: true,
+                itemCount: menuLeft.length,
+                itemBuilder: (context, index) {
+                  return Container(
+                    child: GestureDetector(
+                      onTap: () {},
+                      child: Text(
+                        menuLeft[index],
+                        style: TextStyle(color: Colors.white, fontSize: 15),
+                      ),
+                    ).paddingOnly(top: 15),
+                  );
+                }),
+          ),
+          SizedBox(
+            width: 50,
+          ),
+          Container(
+            width: 50,
+            height: 200,
+            color: Colors.red,
+            child: ListView.builder(
+                shrinkWrap: true,
+                itemCount: menuRight.length,
+                itemBuilder: (context, index) {
+                  return Container(
+                    child: GestureDetector(
+                      onTap: () {},
+                      child: Text(
+                        menuRight[index],
+                        style: TextStyle(color: Colors.white, fontSize: 15),
+                      ),
+                    ).paddingOnly(top: 15),
+                  );
+                }),
+          ),
+        ],
+      ),
+    );
+  }
+
   Widget priceIndex() {
     return Card(
       color: Colors.grey[200],
@@ -223,6 +280,6 @@ class HomeView extends GetView<HomeController> {
           Text('9%'),
         ],
       ),
-    );
+    ).paddingSymmetric(vertical: 10, horizontal: 5);
   }
 }
